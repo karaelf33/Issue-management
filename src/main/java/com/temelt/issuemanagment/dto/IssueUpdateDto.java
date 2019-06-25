@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
-@ApiModel(value = "Issue Data Transfer Oject")
-public class IssueDto {
+@ApiModel(value = "Issue Data Transfer Object")
+public class IssueUpdateDto {
     @ApiModelProperty(required = true, value = "ID")
     private Long id;
     @ApiModelProperty(required = true, value = "Description")
@@ -19,11 +19,9 @@ public class IssueDto {
     @ApiModelProperty(required = true, value = "Issue Status")
     private IssueStatus issueStatus;
     @ApiModelProperty(required = true, value = "Assignee")
-    private UserDto assignee;
+    private Long assignee_id;
     @ApiModelProperty(required = true, value = "Project")
-    private ProjectDto project;
-    private Long projectId;
-
+    private Long project_id;
 
     public Long getId() {
         return id;
@@ -65,42 +63,32 @@ public class IssueDto {
         this.issueStatus = issueStatus;
     }
 
-    public UserDto getAssignee() {
-        return assignee;
+    public Long getAssignee_id() {
+        return assignee_id;
     }
 
-    public void setAssignee(UserDto assignee) {
-        this.assignee = assignee;
+    public void setAssignee_id(Long assignee_id) {
+        this.assignee_id = assignee_id;
     }
 
-    public ProjectDto getProject() {
-        return project;
+    public Long getProject_id() {
+        return project_id;
     }
 
-    public void setProject(ProjectDto project) {
-        this.project = project;
+    public void setProject_id(Long project_id) {
+        this.project_id = project_id;
     }
 
-    public Long getProjectId() {
-        return projectId;
+    public IssueUpdateDto() {
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
-    }
-
-
-    public IssueDto() {
-    }
-
-    public IssueDto(Long id, String description, String details, Date date, IssueStatus issueStatus, UserDto assignee, ProjectDto project, Long projectId) {
+    public IssueUpdateDto(Long id, String description, String details, Date date, IssueStatus issueStatus, Long assignee_id, Long project_id) {
         this.id = id;
         this.description = description;
         this.details = details;
         this.date = date;
         this.issueStatus = issueStatus;
-        this.assignee = assignee;
-        this.project = project;
-        this.projectId = projectId;
+        this.assignee_id = assignee_id;
+        this.project_id = project_id;
     }
 }

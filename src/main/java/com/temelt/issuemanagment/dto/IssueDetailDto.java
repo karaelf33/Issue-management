@@ -1,13 +1,13 @@
 package com.temelt.issuemanagment.dto;
 
 import com.temelt.issuemanagment.entity.IssueStatus;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
+import java.util.List;
 
-@ApiModel(value = "Issue Data Transfer Oject")
-public class IssueDto {
+public class IssueDetailDto {
+
     @ApiModelProperty(required = true, value = "ID")
     private Long id;
     @ApiModelProperty(required = true, value = "Description")
@@ -22,8 +22,8 @@ public class IssueDto {
     private UserDto assignee;
     @ApiModelProperty(required = true, value = "Project")
     private ProjectDto project;
-    private Long projectId;
-
+    @ApiModelProperty(required = true, value = "Issue Histories")
+    private List<IssueHistoryDto> issueHistories;
 
     public Long getId() {
         return id;
@@ -81,19 +81,15 @@ public class IssueDto {
         this.project = project;
     }
 
-    public Long getProjectId() {
-        return projectId;
+    public List<IssueHistoryDto> getIssueHistories() {
+        return issueHistories;
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
+    public void setIssueHistories(List<IssueHistoryDto> issueHistories) {
+        this.issueHistories = issueHistories;
     }
 
-
-    public IssueDto() {
-    }
-
-    public IssueDto(Long id, String description, String details, Date date, IssueStatus issueStatus, UserDto assignee, ProjectDto project, Long projectId) {
+    public IssueDetailDto(Long id, String description, String details, Date date, IssueStatus issueStatus, UserDto assignee, ProjectDto project, List<IssueHistoryDto> issueHistories) {
         this.id = id;
         this.description = description;
         this.details = details;
@@ -101,6 +97,9 @@ public class IssueDto {
         this.issueStatus = issueStatus;
         this.assignee = assignee;
         this.project = project;
-        this.projectId = projectId;
+        this.issueHistories = issueHistories;
+    }
+
+    public IssueDetailDto() {
     }
 }

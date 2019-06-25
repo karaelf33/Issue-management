@@ -1,13 +1,10 @@
 package com.temelt.issuemanagment.entity;
 
-import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",indexes = {@Index(name="idx_username",columnList = "uname")})
 public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,23 +18,13 @@ public class User extends BaseEntity {
 
     @Column(name = "name_surname", length = 200)
     private String nameSurname;
+
     @Column(name = "email", length = 100)
     private String email;
 
-    @JoinColumn(name = "assignee_user;_id")
+    @JoinColumn(name = "assignee_user_id")
     @OneToMany(fetch = FetchType.LAZY)
     private List<Issue> issues;
-    public User() {
-    }
-
-
-    public User(String username, String password, String nameSurname, String email, List<Issue> issues) {
-        this.username = username;
-        this.password = password;
-        this.nameSurname = nameSurname;
-        this.email = email;
-        this.issues = issues;
-    }
 
     public Long getId() {
         return id;
@@ -87,35 +74,15 @@ public class User extends BaseEntity {
         this.issues = issues;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", nameSurname='" + nameSurname + '\'' +
-                ", email='" + email + '\'' +
-                ", issues=" + issues +
-                '}';
+    public User(String username, String password, String nameSurname, String email, List<Issue> issues) {
+        this.username = username;
+        this.password = password;
+        this.nameSurname = nameSurname;
+        this.email = email;
+        this.issues = issues;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(nameSurname, user.nameSurname) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(issues, user.issues);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password, nameSurname, email, issues);
+    public User() {
     }
 }
 

@@ -1,16 +1,24 @@
 package com.temelt.issuemanagment.service;
 
-import com.temelt.issuemanagment.entity.IssueHistory;
-import org.springframework.data.domain.Page;
+import com.temelt.issuemanagment.dto.IssueHistoryDto;
+import com.temelt.issuemanagment.entity.Issue;
+import com.temelt.issuemanagment.util.TPage;
 import org.springframework.data.domain.Pageable;
+import java.util.List;
 
 public interface IssueHistoryService {
 
-    IssueHistory save(IssueHistory issueHistory) throws IllegalAccessException;
+    IssueHistoryDto save(IssueHistoryDto issueHistory);
 
-    IssueHistory getById(Long id);
+    IssueHistoryDto getById(Long id);
 
-    Page<IssueHistory> getAllPageable(Pageable pageable);
+    List<IssueHistoryDto> getByIssueId(Long id);
 
-    Boolean delete(IssueHistory issueHistory);
+    TPage<IssueHistoryDto> getAllPageable(Pageable pageable);
+
+
+    Boolean delete(IssueHistoryDto issueHistory);
+
+    void addHistory(Long id, Issue issue);
+
 }

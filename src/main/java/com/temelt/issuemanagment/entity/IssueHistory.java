@@ -1,6 +1,6 @@
 package com.temelt.issuemanagment.entity;
 
-import lombok.*;
+
 
 import javax.persistence.*;
 import java.util.Date;

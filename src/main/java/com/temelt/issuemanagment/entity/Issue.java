@@ -119,6 +119,7 @@ public class Issue extends  BaseEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, description, details, date, issueStatus, assignee, project);
+
     }
 
     @Override

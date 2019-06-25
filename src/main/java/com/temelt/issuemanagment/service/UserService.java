@@ -1,17 +1,17 @@
 package com.temelt.issuemanagment.service;
 
-import com.temelt.issuemanagment.entity.User;
-import org.springframework.data.domain.Page;
+import com.temelt.issuemanagment.dto.UserDto;
+import com.temelt.issuemanagment.util.TPage;
 import org.springframework.data.domain.Pageable;
 
 public interface UserService {
 
-    User save(User user) throws IllegalAccessException;
+    UserDto save(UserDto user);
 
-    User getById(Long id);
+    UserDto getById(Long id);
 
-    Page<User> getAllPageable(Pageable pageable);
+    TPage<UserDto> getAllPageable(Pageable pageable);
 
-    User getByUserName(String username);
+    UserDto getByUsername(String username);
 
 }
